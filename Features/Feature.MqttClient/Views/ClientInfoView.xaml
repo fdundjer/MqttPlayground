@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Feature.MqttClient.ViewModels;assembly=Feature.MqttClient"
+             mc:Ignorable="d"
+             x:DataType="viewModels:ClientInfoViewModel"
+             x:Class="Feature.MqttClient.Views.ClientInfoView">
+    <ContentView.BindingContext>
+        <viewModels:ClientInfoViewModel />
+    </ContentView.BindingContext>
+    <ContentView.Content>
+        <Grid Padding="20" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Editor Grid.Row="0" Text="{Binding ServerIpAddress}" Placeholder="Server ip address"
+                    IsEnabled="{Binding IsInputEnabled}" />
+            <Editor Grid.Row="1" Text="{Binding ServerPort}" Placeholder="Server port"
+                    IsEnabled="{Binding IsInputEnabled}" />
+            <Button Grid.Row="2" Text="Connect to server" Command="{Binding ConnectToServerCommand}"
+                    IsEnabled="{Binding IsInputEnabled}" />
+            <Label Grid.Row="3" Text="{Binding ErrorText}" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>
